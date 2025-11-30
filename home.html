@@ -1,0 +1,98 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>MC Custom Updates</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      background: #222;
+      color: #eee;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      padding: 20px;
+    }
+    .button-container {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 15px;
+      max-width: 800px;
+      justify-content: center;
+    }
+    .update-button {
+      border: none;
+      background: none;
+      cursor: pointer;
+      outline: none;
+      padding: 0;
+      width: 120px;
+      height: 120px;
+      border-radius: 10px;
+      overflow: hidden;
+      box-shadow: 0 0 10px #444;
+      transition: box-shadow 0.3s ease;
+    }
+    .update-button:hover {
+      box-shadow: 0 0 20px #00ffcc;
+    }
+    .update-button img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      display: block;
+    }
+    .update-label {
+      margin-top: 8px;
+      text-align: center;
+      font-weight: bold;
+    }
+  </style>
+</head>
+<body>
+  <h1>Minecraft Custom Updates</h1>
+  <div class="button-container" id="buttons">
+    <!-- Buttons will go here -->
+  </div>
+
+  <script>
+    // Array of updates - easy to add new ones here
+    const updates = [
+      { img: 'images/ench_upd', label: 'Enchantment Updates', link: '#' },
+      { img: 'images/platal_upd', label: 'Platal Update', link: '#' }
+    ];
+
+    const container = document.getElementById('buttons');
+
+    updates.forEach(update => {
+      const button = document.createElement('button');
+      button.className = 'update-button';
+      button.onclick = () => {
+        window.location.href = update.link;
+      };
+
+      const img = document.createElement('img');
+      img.src = update.img;
+      img.alt = update.label;
+
+      button.appendChild(img);
+
+      // Label under the button
+      const label = document.createElement('div');
+      label.className = 'update-label';
+      label.textContent = update.label;
+
+      const wrapper = document.createElement('div');
+      wrapper.style.display = 'flex';
+      wrapper.style.flexDirection = 'column';
+      wrapper.style.alignItems = 'center';
+
+      wrapper.appendChild(button);
+      wrapper.appendChild(label);
+
+      container.appendChild(wrapper);
+    });
+  </script>
+</body>
+</html>
